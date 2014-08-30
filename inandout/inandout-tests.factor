@@ -5,5 +5,6 @@ IN: inandout.tests
 add-contractor
 : calvin ( -- str ) "@snoopdogg" ;
 
-{ f } [ calvin check-out drop calvin available? ] unit-test
-{ t } [ calvin check-in drop calvin available? ] unit-test
+{ f } [ calvin check-out calvin available? ] unit-test
+{ t } [ calvin check-in calvin available? ] unit-test
+{ f } [ calvin check-in calvin check-out calvin available? ] unit-test

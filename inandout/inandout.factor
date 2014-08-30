@@ -12,17 +12,15 @@ TUPLE: contractor name twitter available ;
     availability
     set-at ;
 
-: check-in ( twitter-handle -- hash )
+: check-in ( twitter-handle -- )
     availability at
     t >>available
-    drop
-    availability ;
+    drop ;
 
-: check-out ( twitter-handle -- hash )
+: check-out ( twitter-handle -- )
     availability at
     f >>available
-    drop
-    availability ;
+    drop ;
 
 : available? ( twitter-handle -- bool )
     availability at available>> ;
