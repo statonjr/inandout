@@ -1,8 +1,8 @@
 USING: tools.test kernel inandout ;
 IN: inandout.tests
 
-"Calvin Broadus" "@snoopdogg" f contractor boa
-add-contractor
+"Calvin Broadus" "@snoopdogg" f contractor boa add-contractor
+
 : calvin ( -- str ) "@snoopdogg" ;
 
 { f } [ calvin check-out calvin available? ] unit-test

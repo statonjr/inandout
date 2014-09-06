@@ -1,5 +1,12 @@
-USING: kernel accessors assocs hashtables ;
+USING: kernel accessors assocs hashtables sequences prettyprint ;
 IN: inandout
+
+<PRIVATE
+
+: status-message ( ? -- str )
+    [ " is in" ] [ " is out" ] if ;
+
+PRIVATE>
 
 TUPLE: contractor name twitter available ;
 : <contractor> ( -- contractor )
@@ -11,6 +18,9 @@ TUPLE: contractor name twitter available ;
     dup twitter>>
     availability
     set-at ;
+
+: all-contractors ( -- arr )
+    availability keys ;
 
 : check-in ( twitter-handle -- )
     availability at
@@ -24,3 +34,8 @@ TUPLE: contractor name twitter available ;
 
 : available? ( twitter-handle -- bool )
     availability at available>> ;
+
+: roll-call ( -- )
+    all-contractors
+    [ dup available? status-message append ]
+    map [ . ] each ;
